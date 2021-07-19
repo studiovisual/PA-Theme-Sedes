@@ -28,10 +28,19 @@ class Blocks {
 		\add_action('acf/include_field_types', 	array($this, 'registerPlugins'));
 		\add_action('enqueue_block_editor_assets', array($this, 'enqueueAssets'));
 
-		\add_filter('render_block', array($this, 'modifyBlockClasses'), 10, 2);
+		// \add_filter('render_block', array($this, 'modifyBlockClasses'), 10, 2);
 		\add_filter('block_categories', array($this, 'addCategory'));
 
 		require_once('Directives.php');
+
+		\add_action('init', function() {
+			$inline_css = '.block-editor-block-inspector { display: none; }';
+			\register_block_style('core/column', [
+				'name' => 'colored-bottom-border',
+				'label' => __('Colored bottom border', 'txtdomain'),
+				'inline_style' => $inline_css
+			]);
+		});
     }
 
 	/**
@@ -94,8 +103,10 @@ class Blocks {
 	}
 
 	function enqueueAssets() {
+		wp_enqueue_style('blocks-bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css', array(), null, 'all');
 		wp_enqueue_style('blocks-stylesheet', get_template_directory_uri() . '/Blocks/assets/blocks.css', array(), \wp_get_theme()->get('Version'), 'all');
-		// wp_enqueue_script('blocks-script', get_template_directory_uri() . '/Blocks/assets/blocks.js', array('wp-hooks', 'wp-blocks', 'wp-dom-ready'));
+		
+		wp_enqueue_script('blocks-script', get_template_directory_uri() . '/Blocks/assets/blocks.js', array('wp-hooks', 'wp-blocks', 'wp-dom-ready'));
 	}
 
 	function modifyBlockClasses($block_content, $block) {
