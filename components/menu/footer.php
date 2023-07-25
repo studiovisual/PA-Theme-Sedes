@@ -24,14 +24,8 @@ $menus = PaThemeHelpers::getGlobalMenu('global-footer');
         <?php if (is_array($menus) && !empty($menus)) : ?>
           <?php foreach ($menus as $menu) : ?>
             <?php if (isset($menu->itens) && !empty($menu->itens)) : ?>
-              <div class="pa-menu pb-4 mb-4">
-                <div class="pa-contact">
-                  <?php if ($adress) {
-                    ?><span class="pa-adress d-block text-center text-md-start lh-lg"><?= $adress ?></span><?php
-                  } ?>
-                </div>
-
-                <ul class="list-unstyled">
+              <div class="pa-menu">
+                <ul class="list-unstyled d-flex justify-content-between">
                   <?php foreach ($menu->itens as $item) : ?>
                     <li class="item-menu">
                       <a href="<?= $item->url ?>" title="<?= $item->title ?>" target="<?= !empty($item->target) ? $item->target : '_self' ?>"><?= $item->title ?></a>
@@ -42,24 +36,30 @@ $menus = PaThemeHelpers::getGlobalMenu('global-footer');
             <?php endif; ?>
           <?php endforeach; ?>
         <?php endif; ?>
+
+        <div class="pa-contact">
+          <?php if ($adress) {
+            ?><span class="pa-adress d-block text-center text-md-start lh-lg"><?= $adress ?></span><?php
+          } ?>
+        </div>
       </div>
       
       <div class="col-3">
         <?php if ($facebook || $twitter || $youtube || $instagram): ?>
-          <div class="pa-social-network align-items-end d-none d-xl-block">
+          <div class="pa-social-network align-items-start d-none d-lg-flex">
             <span><?= _e('Our social networks', 'iasd'); ?></span>
-            <div class="icons mt-3">
+            <div class="icons ml-4">
               <?php if ($facebook) {
-                ?><a href="<?= $facebook ?>" title="Facebook"><i class="fab fa-facebook-f me-4"></i></a><?php
+                ?><a href="<?= $facebook ?>" title="Facebook"><i class="fab fa-facebook-f mr-3"></i></a><?php
               } ?>
               <?php if ($twitter) {
-                ?><a href="<?= $twitter ?>" title="Twitter"><i class="fab fa-twitter me-4"></i></a><?php
+                ?><a href="<?= $twitter ?>" title="Twitter"><i class="fab fa-twitter mr-3"></i></a><?php
               } ?>
               <?php if ($youtube) {
-                ?><a href="<?= $youtube ?>" title="Youtube"><i class="fab fa-youtube me-4"></i></a><?php
+                ?><a href="<?= $youtube ?>" title="Youtube"><i class="fab fa-youtube mr-3"></i></a><?php
               } ?>
               <?php if ($instagram) {
-                ?><a href="<?= $instagram ?>" title="Instagram"><i class="fab fa-instagram-square"></i></a><?php
+                ?><a href="<?= $instagram ?>" title="Instagram"><i class="fab fa-instagram"></i></a><?php
               } ?>
             </div>
           </div>
