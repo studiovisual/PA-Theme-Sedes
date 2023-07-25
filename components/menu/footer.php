@@ -13,14 +13,14 @@ $menus = PaThemeHelpers::getGlobalMenu('global-footer');
 ?>
 
 <footer class="pa-footer pt-5">
-  <div class="container pb-5">
+  <div class="container">
     <div class="row">
       <div class="col-2 d-flex flex-column justify-content-xl-between">
         <div class="d-flex flex-column align-items-center align-items-xl-start px-5 px-xl-0">
           <?php get_template_part('components/menu/footer-logo', 'logo', ['campo' => $campo]); ?>
         </div>
       </div>
-      <div class="col-7 d-none d-xl-block">
+      <div class="col-6 d-block">
         <?php if (is_array($menus) && !empty($menus)) : ?>
           <?php foreach ($menus as $menu) : ?>
             <?php if (isset($menu->itens) && !empty($menu->itens)) : ?>
@@ -44,19 +44,19 @@ $menus = PaThemeHelpers::getGlobalMenu('global-footer');
         </div>
       </div>
       
-      <div class="col-3">
+      <div class="col-4 d-flex justify-content-end align-items-baseline">
         <?php if ($facebook || $twitter || $youtube || $instagram): ?>
-          <div class="pa-social-network align-items-start d-none d-lg-flex">
+          <div class="pa-social-network align-items-center d-none d-lg-flex">
             <span><?= _e('Our social networks', 'iasd'); ?></span>
-            <div class="icons ml-4">
+            <div class="icons">
               <?php if ($facebook) {
-                ?><a href="<?= $facebook ?>" title="Facebook"><i class="fab fa-facebook-f mr-3"></i></a><?php
+                ?><a href="<?= $facebook ?>" title="Facebook"><i class="fab fa-facebook-f"></i></a><?php
               } ?>
               <?php if ($twitter) {
-                ?><a href="<?= $twitter ?>" title="Twitter"><i class="fab fa-twitter mr-3"></i></a><?php
+                ?><a href="<?= $twitter ?>" title="Twitter"><i class="fab fa-twitter"></i></a><?php
               } ?>
               <?php if ($youtube) {
-                ?><a href="<?= $youtube ?>" title="Youtube"><i class="fab fa-youtube mr-3"></i></a><?php
+                ?><a href="<?= $youtube ?>" title="Youtube"><i class="fab fa-youtube"></i></a><?php
               } ?>
               <?php if ($instagram) {
                 ?><a href="<?= $instagram ?>" title="Instagram"><i class="fab fa-instagram"></i></a><?php
