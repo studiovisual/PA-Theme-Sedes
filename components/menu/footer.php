@@ -15,50 +15,26 @@ $menus = PaThemeHelpers::getGlobalMenu('global-footer');
 <footer class="pa-footer pt-5">
   <div class="container pb-5">
     <div class="row">
-      <div class="col d-flex flex-column justify-content-xl-between">
+      <div class="col-2 d-flex flex-column justify-content-xl-between">
         <div class="d-flex flex-column align-items-center align-items-xl-start px-5 px-xl-0">
           <?php get_template_part('components/menu/footer-logo', 'logo', ['campo' => $campo]); ?>
-          
-          <div class="pa-contact">
-            <?php if ($adress) {
-            ?><span class="pa-adress d-block text-center text-md-start lh-lg"><?= $adress ?></span><?php
-                                                                                                  } ?>
-            <?php if ($telephone) {
-            ?><span class="pa-telephone d-block text-center text-md-start mt-4"><?= $telephone ?></span><?php
-                                                                                                      } ?>
-          </div>
         </div>
-        <?php if ($facebook || $twitter || $youtube || $instagram) { ?>
-          <div class="pa-social-network align-items-end d-none d-xl-block">
-            <span><?= _e('Our social networks', 'iasd'); ?></span>
-            <div class="icons mt-3">
-              <?php if ($facebook) {
-              ?><a href="<?= $facebook ?>" title="Facebook"><i class="fab fa-facebook-f me-4"></i></a><?php
-                                                                                                    } ?>
-              <?php if ($twitter) {
-              ?><a href="<?= $twitter ?>" title="Twitter"><i class="fab fa-twitter me-4"></i></a><?php
-                                                                                                } ?>
-              <?php if ($youtube) {
-              ?><a href="<?= $youtube ?>" title="Youtube"><i class="fab fa-youtube me-4"></i></a><?php
-                                                                                                } ?>
-              <?php if ($instagram) {
-              ?><a href="<?= $instagram ?>" title="Instagram"><i class="fab fa-instagram-square"></i></a><?php
-                                                                                                        } ?>
-            </div>
-          </div>
-
-        <?php } ?>
       </div>
-      <div class="col-9 d-none d-xl-block">
+      <div class="col-7 d-none d-xl-block">
         <?php if (is_array($menus) && !empty($menus)) : ?>
           <?php foreach ($menus as $menu) : ?>
             <?php if (isset($menu->itens) && !empty($menu->itens)) : ?>
               <div class="pa-menu pb-4 mb-4">
-                <?php if (!empty($menu->name)) : ?>
-                  <h2><?= $menu->name ?></h2>
-                <?php endif; ?>
+                <div class="pa-contact">
+                  <?php if ($adress) {
+                    ?><span class="pa-adress d-block text-center text-md-start lh-lg"><?= $adress ?></span><?php
+                  } ?>
+                  <?php if ($telephone) {
+                    ?><span class="pa-telephone d-block text-center text-md-start mt-4"><?= $telephone ?></span><?php
+                  } ?>
+                </div>
 
-                <ul class="list-unstyled pa-split-column-3">
+                <ul class="list-unstyled">
                   <?php foreach ($menu->itens as $item) : ?>
                     <li class="item-menu">
                       <a href="<?= $item->url ?>" title="<?= $item->title ?>" target="<?= !empty($item->target) ? $item->target : '_self' ?>"><?= $item->title ?></a>
@@ -68,6 +44,29 @@ $menus = PaThemeHelpers::getGlobalMenu('global-footer');
               </div>
             <?php endif; ?>
           <?php endforeach; ?>
+        <?php endif; ?>
+      </div>
+      
+      <div class="col-3">
+        <?php if ($facebook || $twitter || $youtube || $instagram): ?>
+          <div class="pa-social-network align-items-end d-none d-xl-block">
+            <span><?= _e('Our social networks', 'iasd'); ?></span>
+            <div class="icons mt-3">
+              <?php if ($facebook) {
+                ?><a href="<?= $facebook ?>" title="Facebook"><i class="fab fa-facebook-f me-4"></i></a><?php
+              } ?>
+              <?php if ($twitter) {
+                ?><a href="<?= $twitter ?>" title="Twitter"><i class="fab fa-twitter me-4"></i></a><?php
+              } ?>
+              <?php if ($youtube) {
+                ?><a href="<?= $youtube ?>" title="Youtube"><i class="fab fa-youtube me-4"></i></a><?php
+              } ?>
+              <?php if ($instagram) {
+                ?><a href="<?= $instagram ?>" title="Instagram"><i class="fab fa-instagram-square"></i></a><?php
+              } ?>
+            </div>
+          </div>
+
         <?php endif; ?>
       </div>
     </div>
