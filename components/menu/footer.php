@@ -37,7 +37,7 @@ $menus = PaThemeHelpers::getGlobalMenu('global-footer');
           <?php endforeach; ?>
         <?php endif; ?>
 
-        <div class="pa-contact">
+        <div class="pa-contact mt-2">
           <?php if ($adress) {
             ?><span class="pa-adress d-block text-center text-md-start lh-lg"><?= $adress ?></span><?php
           } ?>
