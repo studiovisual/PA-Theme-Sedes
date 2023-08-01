@@ -29,6 +29,9 @@ $menus = PaThemeHelpers::getGlobalMenu('global-footer');
                   <?php if ($adress) {
                     ?><span class="pa-adress d-block text-center text-md-start lh-lg"><?= $adress ?></span><?php
                   } ?>
+                  <?php if ($telephone) {
+                    ?><span class="pa-telephone d-block text-center text-md-start mt-4"><?= $telephone ?></span><?php
+                  } ?>
                 </div>
 
                 <ul class="list-unstyled">
